@@ -6,15 +6,21 @@ services:
       dockerfile: docker/laravel/Dockerfile
     working_dir: /var/www/html
     volumes:
-     
       - ./laravel-app:/var/www/html
       - laravel_data:/var/www/html/vendor
       - ./docker/laravel/entrypoint.development.sh:/usr/local/bin/entrypoint.development.sh
     ports:
       - "8000:8000"
     depends_on:
-      - mysql-service
+       mysql-service: 
+          condition: service_healthy
     command: ["bash", "/usr/local/bin/entrypoint.development.sh"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/up"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      start_period: 30s
 
   vuejs-service:
     container_name: vuejs-container
@@ -30,9 +36,10 @@ services:
     ports:
       - "5173:5173"
     depends_on:
-      - laravel-service
+        laravel-service:
+          condition: service_healthy
     command: ["sh", "/usr/local/bin/entrypoint.development.sh"]
-
+   
   mysql-service:
     image: mysql:8.0
     container_name: mysql-container
@@ -44,7 +51,12 @@ services:
       TZ: UTC
     volumes:
       - mysql_data:/var/lib/mysql
-
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      start_period: 30s
   phpmyadmin:
     image: phpmyadmin:5.2.2
     container_name: phpmyadmin-container

@@ -58,8 +58,8 @@
   </aside>
 </template>
 <script setup>
-import emptyImage from '@/assets/images/emptyImage.png';
-import logoImage from '@/assets/images/logoImage.webp';
+import emptyImage from '@/assets/images/a.jpg';
+import logoImage from '@/assets/images/b.png';
 import { useUserStore } from '@/stores/user';
 
 const userStore = useUserStore();

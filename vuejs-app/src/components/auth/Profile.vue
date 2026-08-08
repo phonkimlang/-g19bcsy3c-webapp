@@ -22,7 +22,7 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" :src="emptyImage" alt="User profile picture">
+                  <img class="profile-user-img img-circle" :src="emptyImage" alt="User profile picture">
                 </div>
                 <h3 class="profile-username text-center">{{ userStore.name }}</h3>
                 <!-- <p class="text-muted text-center">{{ userStore.level }}</p> -->
@@ -36,6 +36,6 @@
 </template>
 <script setup>
 import { useUserStore } from "@/stores/user";
-import emptyImage from '@/assets/images/emptyImage.png';
+import emptyImage from '@/assets/images/a.jpg';
 const userStore = useUserStore();
 </script>

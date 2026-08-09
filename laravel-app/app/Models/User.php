@@ -6,7 +6,7 @@ namespace App\Models;
 use App\Notifications\EmailVerificationNotification;
 use App\Notifications\ResetPasswordNotification;
 use App\Services\ImageClassService;
-use Database\Factories\UserFactory;
+// use Database\Factories\UserFactory;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;

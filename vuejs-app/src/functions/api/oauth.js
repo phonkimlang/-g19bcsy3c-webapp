@@ -16,7 +16,7 @@ export async function apiOAuthRedirect(driver) {
 }
 export async function apiOAuthExchangeToken(token) {
   try {
-    return await axios.post(APP_API_URL + '/google/oauth/exchange/token', null, {
+    return await axios.post(APP_API_URL + '/oauth/exchange/token', null, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -16,7 +16,7 @@ Route::post('/set/new-password', [AuthController::class, 'setNewPassword'])->nam
 
 Route::get('/{driver}/oauth/redirect', [OAuthController::class, 'oAuthRedirect']);
 Route::get('/{driver}/oauth/callback', [OAuthController::class, 'oAuthCallback']);
-Route::post('/{driver}/oauth/exchange/token', [OAuthController::class, 'oAuthExchangeToken'])->middleware('auth:sanctum');
+Route::post('/oauth/exchange/token', [OAuthController::class, 'oAuthExchangeToken'])->middleware('auth:sanctum');
 
 
 Route::middleware('auth:sanctum')->group(function () {
